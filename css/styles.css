@@ -8,6 +8,93 @@
   --dark-gray: rgba(39, 32, 66, 1);
   --background: rgba(249, 249, 249, 1);
 }
+
+/* HERO layout and content styles */
+.hero {
+  margin-top: 90px;
+}
+.hero-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* two equal columns */
+  gap: 40px;
+  align-items: center;
+}
+.hero-row .left-col {
+  padding: 0;
+}
+.hero-row .right-col {
+  padding: 0;
+}
+.hero-content h1 {
+  font-size: 56px;
+  line-height: 1.05;
+  margin: 0 0 18px 0;
+}
+.hero-content p {
+  /* use normal paragraph styling (match global <p>) */
+  font-family: Inter;
+  font-size: 18px;
+  font-weight: 400; /* normal weight */
+  line-height: 26px;
+  font-style: normal;
+  text-transform: none;
+  color: var(--dark-gray);
+  margin: 0 0 27px 0; /* 27px space below heading */
+  max-width: 540px;
+}
+.hero-ctas {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+.hero-ctas .button {
+  height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px;
+  border-radius: 10px;
+  background: #000; /* match link button */
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  text-transform: uppercase;
+  gap: 8px;
+}
+.hero-ctas .button .btn-icon {
+  height: 20px;
+  width: auto;
+  object-fit: contain;
+}
+.hero-ctas .button span {
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.hero-image img {
+  width: 100%;
+  max-width: 560px;
+  display: block;
+  margin-left: auto;
+}
+
+@media (max-width: 900px) {
+  .hero-row {
+    grid-template-columns: 1fr; /* stack columns on small screens */
+    gap: 20px;
+  }
+  .hero-content h1 {
+    font-size: 36px;
+  }
+  .hero-ctas .button {
+    height: 44px;
+    padding: 0 16px;
+  }
+  .hero-image img {
+    max-width: 100%;
+    margin: 0 auto;
+  }
+}
 h1 {
   font-size: 64px;
   font-family: Inter;
@@ -36,6 +123,47 @@ p {
   text-decoration: none;
   text-transform: none;
   color: var(--light-gray);
+}
+
+/* Styles for tere-benefits page */
+.benefits-page .benefits-list {
+  padding: 60px 0;
+}
+.benefit-row {
+  display: grid;
+  grid-template-columns: 1fr 100px; /* content then number */
+  gap: 20px;
+  align-items: center;
+  margin-bottom: 36px;
+}
+.benefit-row.reverse {
+  grid-template-columns: 100px 1fr; /* number then content */
+}
+.benefit-number {
+  font-size: 56px;
+  font-weight: 900;
+  color: var(--green);
+  text-align: center;
+}
+.benefit-content h3 {
+  font-size: 24px;
+  margin: 0 0 8px 0;
+}
+.benefit-content p {
+  margin: 0;
+  color: var(--dark-gray);
+}
+
+@media (max-width: 900px) {
+  .benefit-row,
+  .benefit-row.reverse {
+    grid-template-columns: 1fr; /* stack on small screens */
+    text-align: left;
+  }
+  .benefit-number {
+    font-size: 48px;
+    margin-bottom: 12px;
+  }
 }
 .button {
   font-size: 24px;
@@ -84,7 +212,8 @@ h3 {
 
 /* HEADER */
 header {
-  padding-top: 80px;
+  padding-top: 40px;
+  margin-top: 20px;
 }
 .container {
   width: 1280px;
@@ -170,4 +299,89 @@ header {
 }
 .text-right .number {
   margin-left: auto;
+}
+
+/* LINK section: green container with rounded corners, description left and form right */
+.link {
+  padding: 60px 0;
+}
+.link .link-container {
+  background: var(--green);
+  border-radius: 12px;
+  padding: 28px; /* uniform padding between container and content */
+  display: grid;
+  /* enforce first column as 25% and let right column take remaining space */
+  grid-template-columns: minmax(0, 25%) 1fr; /* left 25% / right flexible */
+  align-items: center;
+  gap: 24px;
+  box-shadow: 0 6px 18px rgba(16, 24, 40, 0.06);
+}
+.link .description {
+  color: white; /* override default light-gray for contrast */
+  font-size: 20px;
+  line-height: 28px;
+  margin: 0;
+  grid-column: 1 / 2;
+}
+.subscribe-form {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 0 0 auto;
+  grid-column: 2 / 3;
+  justify-self: stretch; /* let form fill its grid cell */
+}
+.subscribe-form input[type="text"] {
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  flex: 1 1 auto; /* fill remaining space inside the form */
+  min-width: 0; /* allow flex children to shrink properly */
+  box-sizing: border-box;
+}
+.subscribe-form button {
+  padding: 12px 18px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  background: white;
+  color: var(--green);
+  font-weight: 700;
+  text-transform: uppercase; /* button text in uppercase */
+}
+
+/* Specific styling for the 'apply to drive' button */
+.btn-apply {
+  background: #000; /* black background */
+  color: #fff; /* white text */
+  text-transform: uppercase; /* force uppercase */
+  white-space: nowrap; /* keep label on one line */
+  padding: 12px 18px;
+}
+
+/* Responsive: stack on smaller screens */
+@media (max-width: 900px) {
+  .link .link-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    align-items: center;
+    text-align: center;
+  }
+  .link .description {
+    grid-column: 1 / -1;
+    margin-bottom: 8px;
+  }
+  .subscribe-form {
+    grid-column: 1 / -1;
+    justify-content: center;
+    width: 100%;
+  }
+  .subscribe-form input[type="text"] {
+    width: 100%;
+    max-width: 520px;
+    flex: none; /* use width on small screens */
+  }
 }
